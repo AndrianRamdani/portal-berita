@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Relasi
+Route::get('penulis', function() {
+    $penulis = \App\User::find(1);
+
+    foreach ($penulis as $artikel => $data) {
+        echo "Judul : $data->judul<br>";
+        echo "Deskripsi : $data->deskripsi<br>";
+        echo "Slug : $data->slug";
+        echo "<hr>";
+    }
+});
