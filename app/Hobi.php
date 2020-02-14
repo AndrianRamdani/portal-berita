@@ -17,4 +17,9 @@ class Hobi extends Model
 
      );
     }
+    public function Siswa()
+    {
+         return $this->belongsToMany(Hobi::class);
+    }
+
 }

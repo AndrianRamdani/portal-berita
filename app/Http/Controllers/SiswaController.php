@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hobi;
 use App\Siswa;
 use Illuminate\Http\Request;
 use Session;
@@ -26,7 +27,8 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('siswa.create');
+        $hobi = Hobi::all();
+        return view('siswa.create', compact('hobi'));
     }
 
     /**

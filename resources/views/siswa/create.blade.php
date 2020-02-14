@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in! --}}
-                    <form action="{{route('siswa.store')}}" method="POST">
+                    <form action="{{route('siswa.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -30,6 +30,16 @@
                             <div class="col-md-8">
                                 <input type="text" name="kelas" required>
                             </div>
+                            <div class="col-md-4">
+                                <label for="">Pilih Hobi</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select class="form-control pilih-hobi" multiple name="hobi_id[]">
+                                    @foreach ($hobi as $item)
+                                        <option value="{{$item->id}}">{{$item->hobi}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Simpan</button>
                         <button class="btn btn-primary" type="reset">Reset</button>
@@ -40,3 +50,11 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.pilih-hobi').select2();
+    });
+</script>
+@endpush
